@@ -7,7 +7,7 @@
             const ctrs = {}
             var sends = 0;
 
-            const ws = new WebSocket("ws://localhost:3000/");
+            const ws = new WebSocket("ws://"+location.host+":5000/");
             function genTraffic() {
                 if (ws.readyState == ws.OPEN) {
                     if (sends % 1000 == 0) console.log(sends);
