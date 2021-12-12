@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <style>
+            .dot {
+                width: 5px;
+                height: 5px;
+                position: absolute;
+                background-color: black;
+                /* transition: all 0.1s linear; */
+            }
+            #cv {
+                border: thin solid black
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id='cv' width=800 height=800></canvas>
+
+        </div>
+        
+        <script>
+            const drivers = {}
+            var recieved = 0;
+
+            const ws = new WebSocket("ws://10.0.0.54:3000/");
+            ws.onmessage = ({data}) => {
+                if (recieved % 1000 == 0){
+                    console.log("recieved", recieved)
+                }
+                recieved += 1;
+                data =  JSON.parse(data);
+                drivers[data[2]] = [data[0], data[1]]
+            };
+            
+
+            var cv = document.getElementById('cv');
+            var ctx = cv.getContext('2d');
+            var cvWidth = cv.width;
+            var cvHeight = cv.height;
+            ctx.fillStyle = '#000';
+
+            function animate() {
+                requestAnimationFrame(animate);
+                // clear canvas
+                ctx.clearRect(0, 0, cvWidth, cvHeight);
+                // draw everything
+                for (const key of Object.keys(drivers)){
+                    ctx.fillRect(drivers[key][0]*40.0, drivers[key][1]*40.0, 10, 10);
+                }
+            }
+
+animate();
+
+
+
+        </script>
+    </body>
+</html>
