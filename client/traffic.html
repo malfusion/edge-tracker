@@ -1,17 +1,18 @@
 <html>
     <body>
-        <h1>Traffic Generator</h1>
+        <h1>Traffic Simulator</h1>
         <script>
             const drivers = {}
             const seeds = {}
             const ctrs = {}
             var sends = 0;
+            var objs = 500;
 
             const ws = new WebSocket("ws://"+location.hostname+":5000/");
             function genTraffic() {
                 if (ws.readyState == ws.OPEN) {
                     if (sends % 1000 == 0) console.log(sends);
-                    for (var j=0; j<500; j++) {
+                    for (var j=0; j<objs; j++) {
                         const i = j;
                         var driver = i.toString()
                         var c = ctrs[driver]
@@ -33,7 +34,7 @@
                 
             }
 
-            for (var i=0; i<500; i++) {
+            for (var i=0; i<objs; i++) {
                 driver = i.toString()
                 drivers[driver] = [Math.random()*20, Math.random()*20]
                 ctrs[driver] = 0.001

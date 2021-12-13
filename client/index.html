@@ -9,7 +9,8 @@
                 /* transition: all 0.1s linear; */
             }
             #cv {
-                border: thin solid black
+                border: thin solid black;
+                background: url("assets/mapimage800.png");
             }
         </style>
     </head>
@@ -39,19 +40,24 @@
             var cvHeight = cv.height;
             ctx.fillStyle = '#000';
 
+            var img = new Image();
+
             function animate() {
                 requestAnimationFrame(animate);
                 // clear canvas
                 ctx.clearRect(0, 0, cvWidth, cvHeight);
                 // draw everything
                 for (const key of Object.keys(drivers)){
-                    ctx.fillRect(drivers[key][0]*40.0, drivers[key][1]*40.0, 10, 10);
+                    //ctx.fillRect(drivers[key][0]*40.0, drivers[key][1]*40.0, 10, 10);
+                    ctx.drawImage(img, drivers[key][0]*40.0, drivers[key][1]*40.0, 24, 24);
                 }
             }
 
-animate();
-
-
+            
+            img.onload = function() {
+                animate();
+            };
+            img.src = 'assets/location-pointer.png';
 
         </script>
     </body>
