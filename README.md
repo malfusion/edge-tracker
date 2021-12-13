@@ -8,7 +8,7 @@ A 2-tiered architecture for enhanced location tracking on the edge using 5G. It 
 # To deploy
 - Follow steps in aws-deployment-steps.sh
 
-# To start Redis server
+# To start Edge server
 - `sudo apt update`
 - `sudo apt install redis-server`
 - `sudo nano /etc/redis/redis.conf`
@@ -19,3 +19,9 @@ A 2-tiered architecture for enhanced location tracking on the edge using 5G. It 
   - `python3 -m http.server`
 - Start the nodejs websocket server from the `nodejs` directory
   - `node server.js`
+
+
+# To start Backend Redis server
+- Follow similar steps as edge to setup redis server
+- Modify REDIS_EDGE_SERVER and REDIS_CORE_SERVER in `nodejs/edgetocore.js`
+- Run `node edgetocore.js` to start streaming batched data from edge redis server to backend redis server.
