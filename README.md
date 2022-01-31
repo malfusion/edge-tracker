@@ -2,7 +2,7 @@
 
 A 2-tiered architecture for enhanced location tracking on the edge using 5G. It enables last-mile fine-grained tracking of personnel without overloading compute-heavy backend servers, by making use of lightweight edge servers to deal with and serve frequent location updates.
 
-[![Alt text](https://img.youtube.com/vi/s8sT9H2RIsQ/0.jpg)](https://www.youtube.com/watch?v=VID)
+[![Alt text](https://img.youtube.com/vi/s8sT9H2RIsQ/0.jpg)](https://www.youtube.com/watch?v=s8sT9H2RIsQ&t=5s)
 
 
 # To deploy
